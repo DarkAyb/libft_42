@@ -19,8 +19,8 @@ static long int	ft_len(int n)
 		len = 1;
 	while (n != 0)
 	{
-		len++;
 		n = n / 10;
+		len++;
 	}
 	return (len);
 }
