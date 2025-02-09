@@ -1,16 +1,17 @@
 #include "libft.h"
 
-static char	*ft_char(char *s, unsigned int number, long int len)
+static char	*ft_char(char *s, unsigned int number, int len)
 {
 	while (number > 0)
 	{
-		s[len--] = 48 + (number % 10);
+		len--;
+		s[len] = '0' + (number % 10);
 		number = number / 10;
 	}
 	return (s);
 }
 
-static long int	ft_len(int n)
+static int	ft_len(int n)
 {
 	int	len;
 
@@ -27,27 +28,51 @@ static long int	ft_len(int n)
 
 char	*ft_itoa(int n)
 {
-	char				*s;
-	long int			len;
-	unsigned int		number;
-	int					sign;
+	char			*s;
+	int				len;
+	unsigned int	number;
 
-	sign = 1;
 	len = ft_len(n);
 	s = (char *)malloc(sizeof(char) * (len + 1));
 	if (!(s))
 		return (NULL);
-	s[len--] = '\0';
+	s[len] = '\0';
 	if (n == 0)
 		s[0] = '0';
-	if (n < 0)
-	{
-		sign *= -1;
-		number = n * -1;
-		s[0] = '-';
-	}
 	else
-		number = n;
-	s = ft_char(s, number, len);
+	{
+		if (n < 0)
+		{
+			s[0] = '-';
+			len--;
+			if (n == INT_MIN)
+				number = 2147483648U;//INT_MIN like unsigned
+			else		
+				number = (unsigned int)(-n);
+		}
+		else
+			number = (unsigned int)n;
+		ft_char(s, number, len);
+	}
 	return (s);
 }
+
+/*#include <stdio.h>
+int main(void)
+{
+	int n = 2147483648;  
+	char *str = ft_itoa(n);
+
+	if (str != NULL)
+	{
+		printf("Integer: %d\n", n);
+		printf("String: %s\n", str);
+		free(str);  // Освобождаем память
+	}
+	else
+	{
+		printf("Memory allocation failed\n");
+	}
+
+	return 0;
+}*/

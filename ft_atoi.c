@@ -18,11 +18,35 @@ int	ft_atoi(const char *str)
 	}
 	else if (str[i] == '+')
 		i++;
-	while (ft_isdigit(str[i]))
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result *= 10;
-		result += str[i] - '0';
+		if (result > (unsigned long int)INT_MAX / 10 || 
+			(result == (unsigned long int)INT_MAX / 10 && str[i] - '0' > INT_MAX % 10))
+		{
+			if (sign == 1)
+				return (INT_MAX);
+			else
+				return (INT_MIN);
+		}
+		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	return (result * sign);
+	return ((int)(result * sign));
 }
+
+/*#include <stdio.h>
+int main() {
+    printf("%d\n", ft_atoi("9"));
+    printf("%d\n", ft_atoi("   999"));
+    printf("%d\n", ft_atoi("-999"));
+    printf("%d\n", ft_atoi("+999"));
+    printf("%d\n", ft_atoi("0000999"));
+    printf("%d\n", ft_atoi("999abc111"));
+    printf("%d\n", ft_atoi("sdfgj999"));
+    printf("%d\n", ft_atoi("-2147483648"));
+    printf("%d\n", ft_atoi("2147483647"));
+    printf("%d\n", ft_atoi("999999999999"));
+    printf("%d\n", ft_atoi("-999999999999"));
+
+    return 0;
+}*/

@@ -13,3 +13,20 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+
+/*#include <stdio.h>
+//#include <stddef.h>
+int main() {
+    char arr[] = "Hello, World!";
+    char target = 'o';
+
+    char *result = (char *)ft_memchr(arr, (int)target, strlen(arr));
+
+    if (result != NULL) {
+        printf("Found '%c' at position: %ld\n", target, result - arr);
+    } else {
+        printf("Character not found\n");
+    }
+
+    return 0;
+}*/
