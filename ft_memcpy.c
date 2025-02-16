@@ -17,3 +17,18 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
+/*#include <stdio.h>
+
+int main()
+{
+	char src[] = "Hello, World!";
+	char dest[50];  
+
+	ft_memcpy(dest, src, 13);
+
+	printf("Source: %s\n", src);
+	printf("Destination: %s\n", dest);
+
+	return 0;
+}*/

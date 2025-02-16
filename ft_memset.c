@@ -14,3 +14,18 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
+
+/*#include <stdio.h>
+
+int main()
+{
+    char str[20] = "Hello, World!";
+    
+    printf("Before memset: %s\n", str);
+
+    ft_memset(str, 'A', 10);
+
+    printf("After memset: %s\n", str);
+
+    return 0;
+}*/

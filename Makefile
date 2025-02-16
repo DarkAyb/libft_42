@@ -28,15 +28,15 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-bonus: $(NAME) $(OBJSB)
+bonus: $(OBJSB)
 	ar rcs $(NAME) $(OBJSB)
 
 clean:
 	$(RM) $(OBJS) $(OBJSB)
 
 fclean: clean
-	$(RM) $(NAME) $(bonus) 
+	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY : all bonus clean fclean re
+.PHONY: all bonus clean fclean re

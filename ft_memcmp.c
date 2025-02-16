@@ -18,7 +18,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	return ((int)(*ptr1 - *ptr2));
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include <string.h>
 
 int main() {
@@ -30,7 +30,7 @@ int main() {
     if (result == 0)
         printf("Первые 8 символов одинаковы\n");
     else
-        printf("Первые 8 символов различны\n");
+        printf("Первые 8 символов различны. Разница: %d\n", result);
 
     return 0;
-}
+}*/
