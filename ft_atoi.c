@@ -20,8 +20,9 @@ int	ft_atoi(const char *str)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (result > (unsigned long int)INT_MAX / 10 || 
-			(result == (unsigned long int)INT_MAX / 10 && str[i] - '0' > INT_MAX % 10))
+		if (result > (unsigned long int)INT_MAX / 10
+			|| (result == (unsigned long int)INT_MAX
+				/ 10 && str[i] - '0' > INT_MAX % 10))
 		{
 			if (sign == 1)
 				return (INT_MAX);
