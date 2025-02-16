@@ -20,7 +20,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-%.o: %.c
+%.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
@@ -28,8 +28,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-bonus: $(OBJSB)
-	ar rcs $(NAME) $(OBJSB)
+bonus: $(OBJS) $(OBJSB)
+    ar rcs $(NAME) $(OBJS) $(OBJSB)
 
 clean:
 	$(RM) $(OBJS) $(OBJSB)

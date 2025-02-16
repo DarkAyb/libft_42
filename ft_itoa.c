@@ -1,73 +1,62 @@
 #include "libft.h"
 
-static char	*ft_char(char *s, unsigned int number, int len)
+static int	num_digit(long num)
 {
-	while (number > 0)
-	{
-		len--;
-		s[len] = '0' + (number % 10);
-		number = number / 10;
-	}
-	return (s);
-}
+	int	cur;
 
-static int	ft_len(int n)
-{
-	int	len;
-
-	len = 0;
-	if (n <= 0)
-		len = 1;
-	while (n != 0)
+	cur = 0;
+	if (num == 0)
+		return (1);
+	if (num < 0)
+		cur++;
+	while (num != 0)
 	{
-		n = n / 10;
-		len++;
+		num = num / 10;
+		cur++;
 	}
-	return (len);
+	return (cur);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*s;
-	int				len;
-	unsigned int	number;
+	long	len;
+	long	nl;
+	char	*result;
 
-	len = ft_len(n);
-	s = (char *)malloc(sizeof(char) * (len + 1));
-	if (!(s))
+	len = num_digit(n);
+	nl = n;
+	if (n < 0)
+		nl *= -1;
+	result = malloc(sizeof(char) * (len + 1));
+	if (!result)
 		return (NULL);
-	s[len] = '\0';
-	if (n == 0)
-		s[0] = '0';
+	result[len] = 0;
+	if (nl == 0)
+		result[0] = '0';
 	else
 	{
-		if (n < 0)
+		while (len--, nl != 0)
 		{
-			s[0] = '-';
-			len--;
-			if (n == INT_MIN)
-				number = 2147483648U;//INT_MIN like unsigned
-			else		
-				number = (unsigned int)(-n);
+			result[len] = (nl % 10) + '0';
+			nl = (nl - (nl % 10)) / 10;
 		}
-		else
-			number = (unsigned int)n;
-		ft_char(s, number, len);
+		if (n < 0)
+			result[len] = '-';
 	}
-	return (s);
+	return (result);
 }
 
 /*#include <stdio.h>
 int main(void)
 {
-	int n = 2147483648;  
+	int n = 55;  
 	char *str = ft_itoa(n);
 
 	if (str != NULL)
 	{
 		printf("Integer: %d\n", n);
 		printf("String: %s\n", str);
-		free(str);  // Освобождаем память
+		free(str);
 	}
 	else
 	{
