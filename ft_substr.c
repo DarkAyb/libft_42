@@ -20,3 +20,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_strlcpy(new, s + start, finish + 1);
 	return (new);
 }
+
+/*#include <stdio.h>
+
+int main()
+{
+    const char *str = "Hello, World!";
+    char *substr = ft_substr(str, 7, 5);
+
+    if (substr)
+    {
+        printf("Substr: %s\n", substr);  // Выведет "World"
+        free(substr);  // Не забывайте освобождать память
+    }
+    return 0;
+}*/

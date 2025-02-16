@@ -8,7 +8,7 @@ static char	**free_array(char **ptr, int i)
 		free(ptr[i]);
 	}
 	free(ptr);
-	return (0);
+	return (NULL);
 }
 
 static int	ft_count_words(char const *str, char c)
@@ -66,7 +66,7 @@ static char	**ft_split_words(char const *s, char c, char **s2, int num_words)
 			word_len++;
 		}
 		s2[word] = (char *)malloc(sizeof(char) * (word_len + 1));
-		if (!s2)
+		if (!s2[word])
 			return (free_array(s2, word));
 		ft_putword(s2[word], s, i, word_len);
 		word_len = 0;
@@ -82,11 +82,33 @@ char	**ft_split(char const *s, char c)
 	unsigned int	num_words;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	num_words = ft_count_words(s, c);
 	s2 = (char **)malloc(sizeof(char *) * (num_words + 1));
 	if (!s2)
-		return (0);
+		return (NULL);
 	s2 = ft_split_words(s, c, s2, num_words);
 	return (s2);
 }
+
+/*#include <stdio.h>
+int main(void)
+{
+    char **result;
+    char str[] = "Hello world! This is a test";
+    int i = 0;
+
+    result = ft_split(str, ' ');
+    if (result)
+    {
+        while (result[i])
+        {
+            printf("Word %d: %s\n", i + 1, result[i]);
+            free(result[i]);
+            i++;
+        }
+        free(result);
+    }
+
+    return 0;
+}*/

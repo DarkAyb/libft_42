@@ -15,3 +15,20 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (0);
 }
+
+/*#include <stdio.h>
+
+int main()
+{
+    const char str[] = "Hello, world!";
+    int ch = 'o';
+    
+    char *result = ft_strrchr(str, ch);
+    
+    if (result)
+        printf("Last occurrence of '%c': %s\n", ch, result);
+    else
+        printf("Character '%c' not found.\n", ch);
+
+    return 0;
+}*/

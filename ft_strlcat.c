@@ -24,3 +24,22 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[d] = 0;
 	return (di + si);
 }
+
+/*#include <stdio.h>
+int main()
+{
+	char buffer1[20] = "Hello";
+	char buffer2[5] = "Hi";
+	const char *src = ", world!";
+	
+	printf("Before: %s\n", buffer1);
+	ft_strlcat(buffer1, src, sizeof(buffer1));
+	printf("After: %s\n\n", buffer1);
+	
+	printf("Before: %s\n", buffer2);
+	size_t needed = ft_strlcat(buffer2, src, sizeof(buffer2));
+	printf("After: %s\n", buffer2);
+	printf("Needed size: %zu\n", needed);
+
+	return 0;
+}*/
