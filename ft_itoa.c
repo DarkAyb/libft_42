@@ -46,8 +46,8 @@ char	*ft_itoa(int n)
 			s[0] = '-';
 			len--;
 			if (n == INT_MIN)
-				number = 2147483648U;//INT_MIN like unsigned
-			else		
+				number = 2147483648U;
+			else
 				number = (unsigned int)(-n);
 		}
 		else
